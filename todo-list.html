@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App - Local Storage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .todo-item {
+            transition: all 0.3s ease;
+        }
+        .todo-item:hover {
+            transform: translateX(5px);
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .checkbox:checked + label {
+            color: #9ca3af;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen py-8 px-4">
+        <div class="max-w-2xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-black text-white mb-2">
+                    <i class="fas fa-tasks mr-3"></i>My To-Do List
+                </h1>
+                <p class="text-purple-100 text-lg">Stay organized and productive</p>
+            </div>
+
+            <!-- Main Card -->
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                
+                <!-- Input Section -->
+                <div class="bg-gradient-to-r from-purple-500 to-pink-500 p-6">
+                    <div class="flex gap-2">
+                        <input 
+                            type="text" 
+                            id="todoInput" 
+                            placeholder="Add a new task..." 
+                            class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300"
+                            autocomplete="off"
+                        >
+                        <button 
+                            id="addBtn" 
+                            class="bg-white text-purple-600 hover:bg-purple-50 px-6 py-3 rounded-lg font-bold transition-all shadow-md hover:shadow-lg"
+                        >
+                            <i class="fas fa-plus mr-2"></i>Add
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filter & Stats Section -->
+                <div class="bg-gray-50 px-6 py-4 border-b border-gray-200 flex flex-wrap justify-between items-center gap-4">
+                    <div class="flex gap-2">
+                        <button class="filter-btn bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-bold" data-filter="all">
+                            All
+                        </button>
+                        <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-bold hover:bg-purple-100" data-filter="active">
+                            Active
+                        </button>
+                        <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-bold hover:bg-purple-100" data-filter="completed">
+                            Completed
+                        </button>
+                    </div>
+                    <div class="text-sm font-bold text-gray-600">
+                        <span id="statsText">0 tasks</span>
+                    </div>
+                </div>
+
+                <!-- Todo List -->
+                <div id="todoList" class="p-6 space-y-2 max-h-96 overflow-y-auto">
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fas fa-inbox text-4xl mb-3"></i>
+                        <p>No tasks yet. Add one to get started! 🚀</p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="border-t border-gray-200 bg-gray-50 px-6 py-4 flex gap-2">
+                    <button id="clearCompleted" class="flex-1 bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="fas fa-trash mr-2"></i>Clear Completed
+                    </button>
+                    <button id="clearAll" class="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-bold transition-all">
+                        <i class="fas fa-times mr-2"></i>Clear All
+                    </button>
+                </div>
+
+                <!-- Footer Stats -->
+                <div class="bg-white border-t border-gray-200 px-6 py-4 text-center text-sm text-gray-600">
+                    <p>
+                        <strong id="totalTasks">0</strong> total • 
+                        <strong id="activeTasks">0</strong> active • 
+                        <strong id="completedTasks">0</strong> completed
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Info -->
+            <div class="text-center mt-8 text-white">
+                <p class="text-sm">💾 Your tasks are automatically saved to your browser</p>
+                <p class="text-xs mt-2 text-purple-100">All data is stored locally - no account needed!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize variables
+        let todos = JSON.parse(localStorage.getItem('todos')) || [];
+        let currentFilter = 'all';
+
+        const todoInput = document.getElementById('todoInput');
+        const addBtn = document.getElementById('addBtn');
+        const todoList = document.getElementById('todoList');
+        const clearCompleted = document.getElementById('clearCompleted');
+        const clearAll = document.getElementById('clearAll');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        // Add todo
+        function addTodo() {
+            const text = todoInput.value.trim();
+            if (text === '') {
+                alert('Please enter a task!');
+                return;
+            }
+
+            const todo = {
+                id: Date.now(),
+                text: text,
+                completed: false,
+                createdAt: new Date().toLocaleString()
+            };
+
+            todos.unshift(todo);
+            saveTodos();
+            renderTodos();
+            todoInput.value = '';
+            todoInput.focus();
+        }
+
+        // Delete todo
+        function deleteTodo(id) {
+            todos = todos.filter(todo => todo.id !== id);
+            saveTodos();
+            renderTodos();
+        }
+
+        // Toggle todo
+        function toggleTodo(id) {
+            const todo = todos.find(t => t.id === id);
+            if (todo) {
+                todo.completed = !todo.completed;
+                saveTodos();
+                renderTodos();
+            }
+        }
+
+        // Save to local storage
+        function saveTodos() {
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+        // Render todos
+        function renderTodos() {
+            todoList.innerHTML = '';
+
+            const filtered = todos.filter(todo => {
+                if (currentFilter === 'active') return !todo.completed;
+                if (currentFilter === 'completed') return todo.completed;
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                todoList.innerHTML = `
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fas fa-inbox text-4xl mb-3"></i>
+                        <p>${currentFilter === 'completed' ? 'No completed tasks yet.' : currentFilter === 'active' ? 'All tasks completed! 🎉' : 'No tasks yet. Add one to get started! 🚀'}</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(todo => {
+                const todoEl = document.createElement('div');
+                todoEl.className = 'todo-item fade-in bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-all border-l-4 ' + 
+                    (todo.completed ? 'border-green-500' : 'border-purple-500');
+                
+                todoEl.innerHTML = `
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center flex-1 gap-3">
+                            <input 
+                                type="checkbox" 
+                                class="checkbox w-5 h-5 cursor-pointer accent-purple-600" 
+                                ${todo.completed ? 'checked' : ''}
+                                onchange="toggleTodo(${todo.id})"
+                            >
+                            <label class="flex-1 cursor-pointer ${todo.completed ? 'text-gray-400 line-through' : 'text-gray-800'} font-medium">
+                                ${todo.text}
+                            </label>
+                        </div>
+                        <button 
+                            onclick="deleteTodo(${todo.id})" 
+                            class="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded transition-all"
+                            title="Delete task"
+                        >
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2 ml-8">${todo.createdAt}</p>
+                `;
+                
+                todoList.appendChild(todoEl);
+            });
+
+            updateStats();
+        }
+
+        // Update statistics
+        function updateStats() {
+            const total = todos.length;
+            const completed = todos.filter(t => t.completed).length;
+            const active = total - completed;
+
+            document.getElementById('totalTasks').textContent = total;
+            document.getElementById('activeTasks').textContent = active;
+            document.getElementById('completedTasks').textContent = completed;
+            document.getElementById('statsText').textContent = `${active} ${active === 1 ? 'task' : 'tasks'} left`;
+
+            clearCompleted.disabled = completed === 0;
+        }
+
+        // Clear completed
+        clearCompleted.addEventListener('click', () => {
+            if (confirm('Delete all completed tasks?')) {
+                todos = todos.filter(todo => !todo.completed);
+                saveTodos();
+                renderTodos();
+            }
+        });
+
+        // Clear all
+        clearAll.addEventListener('click', () => {
+            if (confirm('Delete ALL tasks? This cannot be undone!')) {
+                todos = [];
+                saveTodos();
+                renderTodos();
+            }
+        });
+
+        // Filter buttons
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('bg-purple-600', 'text-white'));
+                filterBtns.forEach(b => b.classList.add('bg-gray-200', 'text-gray-700'));
+                
+                btn.classList.remove('bg-gray-200', 'text-gray-700');
+                btn.classList.add('bg-purple-600', 'text-white');
+                
+                currentFilter = btn.dataset.filter;
+                renderTodos();
+            });
+        });
+
+        // Add todo on button click
+        addBtn.addEventListener('click', addTodo);
+
+        // Add todo on Enter key
+        todoInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addTodo();
+            }
+        });
+
+        // Initial render
+        renderTodos();
+    </script>
+</body>
+</html>
