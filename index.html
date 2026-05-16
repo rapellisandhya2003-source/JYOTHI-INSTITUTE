@@ -3,164 +3,445 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jyothi Institute & CSC Digital Seva</title>
-    <!-- Tailwind CSS Engine -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- FontAwesome Vector Icons -->
+    <title>Jyothi Institute CSC Center - Digital Seva | Bachannapet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style> .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); } </style>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        }
+        .logo-svg {
+            width: 60px;
+            height: 60px;
+        }
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-    <!-- Header / Branding Navigation -->
-    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-100">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-black text-blue-900 tracking-wide">JYOTHI INSTITUTE</h1>
-                <p class="text-xs text-orange-600 font-bold tracking-wider">CSC DIGITAL SEVA & COMPUTER EDUCATION</p>
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-blue-600">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Blue Circle Background -->
+                    <circle cx="50" cy="50" r="48" fill="#0f172a" stroke="#1e3a8a" stroke-width="2"/>
+                    <!-- Gold/Orange Accent Ring -->
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="#f59e0b" stroke-width="2"/>
+                    <!-- Book/Learning Symbol -->
+                    <path d="M 35 35 Q 35 25, 50 25 Q 65 25, 65 35 L 65 65 Q 50 70, 35 65 Z" fill="#f59e0b"/>
+                    <!-- Digital Wave -->
+                    <path d="M 40 55 Q 45 50, 50 55 Q 55 60, 60 55" stroke="#fff" stroke-width="2" fill="none"/>
+                    <!-- CSC Text Badge -->
+                    <circle cx="50" cy="80" r="8" fill="#06b6d4"/>
+                    <text x="50" y="82" text-anchor="middle" fill="white" font-size="6" font-weight="bold">CSC</text>
+                </svg>
+                <div>
+                    <h1 class="text-xl font-black text-blue-900 tracking-wide">JYOTHI INSTITUTE</h1>
+                    <p class="text-xs text-orange-600 font-bold tracking-wider">CSC Digital Seva Center</p>
+                </div>
             </div>
-            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg transition-all shadow-sm">Contact Portal</a>
+            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg transition-all shadow-md">
+                <i class="fas fa-phone mr-2"></i>Contact Now
+            </a>
         </div>
     </header>
 
-    <!-- Welcome Hero Banner -->
+    <!-- Hero Section -->
     <section class="hero-gradient text-white py-20 px-6 text-center">
-        <div class="max-w-3xl mx-auto">
-            <span class="bg-orange-500 text-white text-xs px-3 py-1.5 rounded-full font-extrabold uppercase tracking-widest shadow-sm">Official CSC VLE Center</span>
-            <h2 class="text-3xl md:text-5xl font-black mt-6 mb-6 leading-tight tracking-tight">Empowering Our Community with Digital Services & Modern Computer Education</h2>
-            <p class="text-md md:text-lg text-slate-300 mb-8 max-w-2xl mx-auto font-medium">Your trusted local hub for authorized Government application processing, instant utilities, banking solutions, and professional IT training certificate courses.</p>
+        <div class="max-w-4xl mx-auto fade-in">
+            <span class="bg-orange-500 text-white text-xs px-4 py-2 rounded-full font-extrabold uppercase tracking-widest shadow-md inline-block mb-6">
+                <i class="fas fa-star mr-2"></i>Official CSC Digital Seva Center
+            </span>
+            <h2 class="text-4xl md:text-5xl font-black mt-6 mb-6 leading-tight tracking-tight">
+                Empowering Bachannapet with Digital Services & Computer Education
+            </h2>
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto font-medium leading-relaxed">
+                Your trusted local hub for government e-services, digital document processing, and professional IT training. Serving Bachannapet, Jangaon District since day one.
+            </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://wa.me/919876543210" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3.5 rounded-xl inline-flex items-center shadow-md transition-all">
-                    <i class="fab fa-whatsapp text-lg mr-2"></i> Message Us on WhatsApp
+                <a href="https://wa.me/919848721648?text=Hello%20Jyothi%20Institute!%20I%20need%20assistance." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-4 rounded-xl inline-flex items-center shadow-lg transition-all transform hover:scale-105">
+                    <i class="fab fa-whatsapp text-lg mr-2"></i> Chat on WhatsApp
                 </a>
-                <a href="#services" class="bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3.5 rounded-xl border border-white/20 transition-all">
-                    View Course Catalog
+                <a href="#services" class="bg-white/20 hover:bg-white/30 text-white font-bold px-8 py-4 rounded-xl border-2 border-white transition-all">
+                    Explore Services
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- About the Director -->
-    <section class="max-w-6xl mx-auto px-6 py-16">
-        <div class="grid md:grid-cols-3 gap-12 items-center bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-slate-100">
+    <!-- Director Profile Section -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid md:grid-cols-2 gap-12 items-center bg-white p-8 md:p-12 rounded-2xl shadow-lg border border-slate-200">
             
-            <!-- Photo Slot -->
-            <div class="md:col-span-1 text-center">
-                <div class="w-48 h-48 bg-gradient-to-br from-blue-400 to-orange-400 rounded-2xl mx-auto flex items-center justify-center border-2 border-dashed border-slate-300 relative group overflow-hidden">
-                    <div class="text-center p-4">
-                        <i class="fas fa-user-tie text-white text-5xl mb-2"></i>
-                        <p class="text-[10px] uppercase font-bold text-white tracking-wider">Director Photo</p>
+            <!-- Photo Section -->
+            <div class="text-center">
+                <div class="w-64 h-64 mx-auto bg-gradient-to-br from-blue-400 via-blue-600 to-orange-400 rounded-2xl flex items-center justify-center shadow-xl border-4 border-white">
+                    <div class="text-center">
+                        <i class="fas fa-user-tie text-white text-6xl mb-3"></i>
+                        <p class="text-white font-bold text-sm">Rapelly Venkateshwarlu</p>
+                        <p class="text-white text-xs mt-2">Director & Founder</p>
                     </div>
+                </div>
+                <div class="mt-6 bg-blue-50 p-4 rounded-xl">
+                    <p class="text-sm text-blue-900 font-bold">
+                        <i class="fas fa-award text-orange-500 mr-2"></i>NGO Service Background
+                    </p>
                 </div>
             </div>
 
-            <!-- About Text -->
-            <div class="md:col-span-2">
-                <span class="text-blue-600 font-extrabold text-xs tracking-widest uppercase">Director & Founder Profile</span>
-                <h3 class="text-3xl font-extrabold text-slate-900 mt-2 mb-4">Led by Visionary Leadership</h3>
+            <!-- Profile Info -->
+            <div>
+                <span class="text-blue-600 font-extrabold text-xs tracking-widest uppercase">
+                    <i class="fas fa-star text-orange-500 mr-2"></i>Director & Founder
+                </span>
+                <h3 class="text-3xl font-extrabold text-slate-900 mt-4 mb-4">Rapelly Venkateshwarlu</h3>
                 
-                <p class="text-slate-600 leading-relaxed mb-6">
-                    As a dedicated digital entrepreneur and authorized Village Level Entrepreneur (VLE), we have built Jyothi Institute to serve as a beacon of growth for our community. We combine transparent administrative support with hands-on technical mentoring to make sure nobody gets left behind in the digital age.
-                </p>
-                
-                <div class="flex flex-wrap gap-4">
-                    <span class="bg-slate-100 text-slate-700 text-xs px-3 py-2 rounded-lg font-bold inline-flex items-center gap-1.5"><i class="fas fa-award text-blue-600"></i> Certified VLE Operator</span>
-                    <span class="bg-slate-100 text-slate-700 text-xs px-3 py-2 rounded-lg font-bold inline-flex items-center gap-1.5"><i class="fas fa-laptop text-orange-600"></i> Tech Educator</span>
-                    <span class="bg-slate-100 text-slate-700 text-xs px-3 py-2 rounded-lg font-bold inline-flex items-center gap-1.5"><i class="fas fa-handshake text-green-600"></i> Community Champion</span>
+                <div class="space-y-4 mb-8">
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        With a dedicated background in NGO service and community development, Rapelly Venkateshwarlu established Jyothi Institute CSC Center to bridge the digital divide in Bachannapet and surrounding areas.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        His vision is to empower every citizen with access to government digital services while providing quality computer education to create skilled professionals for the future.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg border-l-4 border-blue-600">
+                        <p class="text-2xl font-black text-blue-600">500+</p>
+                        <p class="text-xs text-slate-600 font-bold mt-1">Citizens Served</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-lg border-l-4 border-orange-600">
+                        <p class="text-2xl font-black text-orange-600">100+</p>
+                        <p class="text-xs text-slate-600 font-bold mt-1">Students Trained</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-3 mt-8">
+                    <span class="bg-blue-100 text-blue-700 text-xs px-4 py-2 rounded-full font-bold inline-flex items-center gap-2">
+                        <i class="fas fa-certificate text-blue-600"></i> Certified CSC VLE
+                    </span>
+                    <span class="bg-orange-100 text-orange-700 text-xs px-4 py-2 rounded-full font-bold inline-flex items-center gap-2">
+                        <i class="fas fa-heart text-orange-600"></i> NGO Background
+                    </span>
+                    <span class="bg-green-100 text-green-700 text-xs px-4 py-2 rounded-full font-bold inline-flex items-center gap-2">
+                        <i class="fas fa-people-group text-green-600"></i> Community Focused
+                    </span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Detailed Split Services Block -->
-    <section id="services" class="bg-slate-100 py-16 px-6">
+    <!-- Services Section -->
+    <section id="services" class="bg-gradient-to-br from-slate-100 to-slate-200 py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">Our Comprehensive Services</h2>
+                <p class="text-slate-600 text-lg max-w-2xl mx-auto">Complete digital solutions for government services, document processing, and IT education</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Service 1: Computer Training -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-md border-t-4 border-blue-600">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-4">Computer Training</h4>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-blue-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>BCC:</strong> MS Office, Email, Internet Basics</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-blue-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>ADCA:</strong> Advanced Database & Systems</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-blue-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>Typing:</strong> High-speed typing bootcamp</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-blue-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>DTP:</strong> Digital Design & Publishing</span>
+                        </li>
+                    </ul>
+                    <button class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-all">
+                        Enroll Now
+                    </button>
+                </div>
+
+                <!-- Service 2: CSC Services -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-md border-t-4 border-orange-600">
+                    <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-4">CSC Services</h4>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-orange-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>Aadhaar:</strong> Registration & Updates</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-orange-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>Banking:</strong> AePS & Money Transfer</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-orange-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>Utilities:</strong> Bill Payment Services</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-orange-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>Recharge:</strong> Mobile & DTH Services</span>
+                        </li>
+                    </ul>
+                    <button class="mt-6 w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-lg transition-all">
+                        Access Services
+                    </button>
+                </div>
+
+                <!-- Service 3: Document Processing -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-md border-t-4 border-green-600">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-2xl font-bold mb-6">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-4">Document Processing</h4>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-green-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>Certificates:</strong> Birth, Caste, Income</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-green-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>IDs:</strong> Voter ID, PAN, Passport</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-green-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>Registration:</strong> Land & Property</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <i class="fas fa-check text-green-500 mt-1 flex-shrink-0"></i>
+                            <span><strong>Forms:</strong> Government Applications</span>
+                        </li>
+                    </ul>
+                    <button class="mt-6 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition-all">
+                        Apply Now
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="bg-white py-16 px-6">
         <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-extrabold text-center mb-12 text-slate-900">Our Services & Programs</h3>
-            <div class="grid md:grid-cols-2 gap-8">
+            <h2 class="text-3xl font-black text-center text-slate-900 mb-12">Why Choose Jyothi Institute?</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-check text-blue-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mb-2">Trusted Expert</h4>
+                    <p class="text-slate-600 text-sm">Certified VLE with NGO background serving the community</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-laptop text-orange-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mb-2">Modern Facilities</h4>
+                    <p class="text-slate-600 text-sm">Latest computers and technology for best learning</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-green-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mb-2">Personalized Service</h4>
+                    <p class="text-slate-600 text-sm">Individual attention and flexible training schedules</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-certificate text-purple-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 mb-2">Certified Programs</h4>
+                    <p class="text-slate-600 text-sm">Government recognized courses and certifications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-black text-center mb-12">Get in Touch</h2>
+            <div class="grid md:grid-cols-2 gap-12">
                 
-                <!-- Category 1: Computer Training -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/60 hover:shadow-md transition-all">
-                    <div>
-                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-lg font-bold mb-6"><i class="fas fa-graduation-cap"></i></div>
-                        <h4 class="text-xl font-bold text-slate-900 mb-4">Authorized Training Classes</h4>
-                        <ul class="space-y-4 text-slate-600 text-sm">
-                            <li class="flex gap-2"><i class="fas fa-check text-blue-500 mt-1 flex-shrink-0"></i> <div><strong>Basic Computer Course (BCC):</strong> MS Office Suite (Word, Excel, PowerPoint), email systems, and browser tools.</div></li>
-                            <li class="flex gap-2"><i class="fas fa-check text-blue-500 mt-1 flex-shrink-0"></i> <div><strong>Advanced Applications (ADCA):</strong> Database administration, logic systems, and management configurations.</div></li>
-                            <li class="flex gap-2"><i class="fas fa-check text-blue-500 mt-1 flex-shrink-0"></i> <div><strong>Desktop Publishing (DTP):</strong> Localized printing design, layout frameworks, and graphic foundations.</div></li>
-                            <li class="flex gap-2"><i class="fas fa-check text-blue-500 mt-1 flex-shrink-0"></i> <div><strong>Typing Bootcamps:</strong> Dedicated high-speed lab sessions to clear administrative government speed benchmarks.</div></li>
-                        </ul>
+                <!-- Contact Info -->
+                <div class="space-y-6">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-phone text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Phone</h4>
+                            <a href="tel:+919848721648" class="text-slate-200 hover:text-white transition-all">
+                                +91 98487 21648
+                            </a>
+                        </div>
                     </div>
-                    <div class="mt-8 pt-4 border-t border-slate-100 text-center">
-                        <a href="#contact" class="text-blue-600 hover:text-blue-700 font-bold text-sm">Enroll Now →</a>
+
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-envelope text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Email</h4>
+                            <a href="mailto:cscbpet@gmail.com" class="text-slate-200 hover:text-white transition-all">
+                                cscbpet@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-map-marker-alt text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Address</h4>
+                            <p class="text-slate-200">
+                                1-57, 1st Ward<br>
+                                Bachannapet<br>
+                                Jangaon District, Telangana<br>
+                                PIN: 506221
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-clock text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">Business Hours</h4>
+                            <p class="text-slate-200">
+                                <strong>Monday - Sunday:</strong><br>
+                                9:00 AM - 10:00 PM
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Category 2: CSC Digital Seva -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/60 hover:shadow-md transition-all">
-                    <div>
-                        <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-lg font-bold mb-6"><i class="fas fa-server"></i></div>
-                        <h4 class="text-xl font-bold text-slate-900 mb-4">CSC Public e-Services</h4>
-                        <ul class="space-y-4 text-slate-600 text-sm">
-                            <li class="flex gap-2"><i class="fas fa-check text-orange-500 mt-1 flex-shrink-0"></i> <div><strong>Identity & Registry Updates:</strong> Official applications and modifications for PAN card registers, Aadhaar parameters, Voter IDs, and Passports.</div></li>
-                            <li class="flex gap-2"><i class="fas fa-check text-orange-500 mt-1 flex-shrink-0"></i> <div><strong>Civil Documentation Tracking:</strong> State-level processing pipelines for localized Income, Caste, Birth, and Residence certifications.</div></li>
-                            <li class="flex gap-2"><i class="fas fa-check text-orange-500 mt-1 flex-shrink-0"></i> <div><strong>Micro-Banking Gateways:</strong> Secure Aadhaar-Enabled Cash Withdrawal infrastructure (AePS), immediate balance transfers, and premium insurance claims.</div></li>
-                            <li class="flex gap-2"><i class="fas fa-check text-orange-500 mt-1 flex-shrink-0"></i> <div><strong>Utility Bill Processing:</strong> Walk-in settlement window for municipal electric connections, gas utility pipelines, and network recharges.</div></li>
-                        </ul>
-                    </div>
-                    <div class="mt-8 pt-4 border-t border-slate-100 text-center">
-                        <a href="#contact" class="text-orange-600 hover:text-orange-700 font-bold text-sm">Get Started →</a>
-                    </div>
+                <!-- Quick Contact Form -->
+                <div class="bg-white/10 backdrop-blur p-8 rounded-2xl border border-white/20">
+                    <h4 class="text-xl font-bold mb-6">Send Us a Message</h4>
+                    <form class="space-y-4" onsubmit="return handleSubmit(event)">
+                        <input 
+                            type="text" 
+                            placeholder="Your Name" 
+                            class="w-full px-4 py-3 rounded-lg bg-white/90 text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            required
+                        >
+                        <input 
+                            type="email" 
+                            placeholder="Your Email" 
+                            class="w-full px-4 py-3 rounded-lg bg-white/90 text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            required
+                        >
+                        <textarea 
+                            placeholder="Your Message" 
+                            rows="4"
+                            class="w-full px-4 py-3 rounded-lg bg-white/90 text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            required
+                        ></textarea>
+                        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition-all">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Quick Stats -->
-    <section class="bg-white py-12 px-6 border-t border-b border-slate-200">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-center">
-            <div>
-                <h3 class="text-3xl font-black text-blue-600">500+</h3>
-                <p class="text-slate-600 text-sm mt-2">Students Trained</p>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 border-b border-slate-700 pb-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg class="w-12 h-12" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="48" fill="#0f172a" stroke="#1e3a8a" stroke-width="2"/>
+                            <circle cx="50" cy="50" r="42" fill="none" stroke="#f59e0b" stroke-width="2"/>
+                            <path d="M 35 35 Q 35 25, 50 25 Q 65 25, 65 35 L 65 65 Q 50 70, 35 65 Z" fill="#f59e0b"/>
+                            <path d="M 40 55 Q 45 50, 50 55 Q 55 60, 60 55" stroke="#fff" stroke-width="2" fill="none"/>
+                            <circle cx="50" cy="80" r="8" fill="#06b6d4"/>
+                            <text x="50" y="82" text-anchor="middle" fill="white" font-size="6" font-weight="bold">CSC</text>
+                        </svg>
+                        <div>
+                            <h5 class="text-lg font-bold">Jyothi Institute</h5>
+                            <p class="text-xs text-slate-400">CSC Digital Seva Center</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Empowering Bachannapet with digital services and quality computer education since day one.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li><a href="#services" class="hover:text-white transition-all">Services</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-all">Contact</a></li>
+                        <li><a href="tel:+919848721648" class="hover:text-white transition-all">Call Us</a></li>
+                        <li><a href="https://wa.me/919848721648" class="hover:text-white transition-all">WhatsApp</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Follow Us</h5>
+                    <div class="flex gap-4">
+                        <a href="https://wa.me/919848721648" class="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-lg flex items-center justify-center transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-all">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-pink-600 hover:bg-pink-700 rounded-lg flex items-center justify-center transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h3 class="text-3xl font-black text-orange-600">10K+</h3>
-                <p class="text-slate-600 text-sm mt-2">E-Services Processed</p>
+            <div class="text-center text-slate-400 text-sm">
+                <p>&copy; 2026 Jyothi Institute CSC Center, Bachannapet. All rights reserved.</p>
+                <p class="mt-2 text-xs">Built with <i class="fas fa-heart text-red-500"></i> for your digital future</p>
             </div>
-            <div>
-                <h3 class="text-3xl font-black text-green-600">95%</h3>
-                <p class="text-slate-600 text-sm mt-2">Success Rate</p>
-            </div>
-            <div>
-                <h3 class="text-3xl font-black text-purple-600">24/7</h3>
-                <p class="text-slate-600 text-sm mt-2">Customer Support</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer / Live Address Information Portal -->
-    <footer id="contact" class="bg-slate-900 text-white pt-16 pb-8 px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 border-b border-slate-800 pb-12 text-sm">
-            <div>
-                <h5 class="text-lg font-bold text-white mb-4">Jyothi Institute</h5>
-                <p class="text-slate-400 leading-relaxed">Dedicated to community digital advancement, bringing e-governance solutions directly to citizens while training future IT experts.</p>
-            </div>
-            <div>
-                <h5 class="text-lg font-bold text-white mb-4">Business Hours</h5>
-                <p class="text-slate-400 mb-2"><strong class="text-white">Monday - Saturday:</strong> 9:00 AM – 8:00 PM</p>
-                <p class="text-slate-400"><strong class="text-white">Sunday:</strong> Closed</p>
-            </div>
-            <div>
-                <h5 class="text-lg font-bold text-white mb-4">Contact Information</h5>
-                <p class="text-slate-400 mb-3 flex items-center gap-2"><i class="fas fa-phone text-orange-400"></i> +91 98765 43210</p>
-                <p class="text-slate-400 mb-3 flex items-center gap-2"><i class="fas fa-envelope text-orange-400"></i> info@jyothiinstitute.in</p>
-                <p class="text-slate-400 flex items-center gap-2"><i class="fas fa-map-marker-alt text-orange-400"></i> Main Street, Your City</p>
-            </div>
-        </div>
-        <div class="max-w-6xl mx-auto pt-6 text-center text-xs text-slate-500 font-medium">
-            &copy; 2026 Jyothi Institute. All rights reserved. Developed with pride.
         </div>
     </footer>
 
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for reaching out! We will contact you soon.');
+            event.target.reset();
+            return false;
+        }
+    </script>
 </body>
 </html>
